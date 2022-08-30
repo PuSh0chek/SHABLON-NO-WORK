@@ -4,11 +4,13 @@
 
 .posts {
   display: flex;
+  flex-flow: row wrap;
   justify-content: center;
   align-items: center;
 }
 
 .posts__list {
+  width: 100%;
   list-style-type: none;
   gap: 20px;
   display: grid;
@@ -33,13 +35,10 @@
 }
 
 .button {
-  position: absolute;
   background-color: #7B68EE;
   width: 50px;
   height: 35px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+
   border-radius: 10%;
   &:hover {
     background-color: #9400D3;
@@ -50,12 +49,17 @@
   }
 }
 
-.button__left {
-  position: relative;
+.button__prev {
   justify-content: flex-start;
 }
 
-.button__right {
-  position: relative;
+.button__next {
   justify-content: flex-end;
+}
+
+.button__clip {
+  width: 25px;
+  height: 25px;
+  background-image: url('/img/delete-svgrepo-com.svg');
+  cursor: pointer;
 }

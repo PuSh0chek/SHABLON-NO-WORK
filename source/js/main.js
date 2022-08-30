@@ -1,5 +1,12 @@
 const postsContainer = document.querySelector('.posts');
 const postsList = document.querySelector('.posts__list');
+const buttonPrev = document.querySelector('.button__prev');
+const buttonNext = document.querySelector('.button__next');
+const buttonClip = document.querySelectorAll('.button__clip');
+
+let count = 1;
+let start = 0;
+let end = 10;
 
 const makeTag = (tagName, tagClass, placeAdd, tagContent = '') => {
   const element = document.createElement(tagName);
@@ -9,22 +16,45 @@ const makeTag = (tagName, tagClass, placeAdd, tagContent = '') => {
   return element;
 };
 
-const createPost = ({ id, title, body}) => {
+const createPost = ({id, title, body}) => {
   const li = makeTag('li', 'posts__element', postsList);
+  makeTag('span', 'posts__id', li, id);
   makeTag('h3', 'posts__title', li, title);
   makeTag('p', 'posts__text', li, body);
-  makeTag('span', 'posts__id', li, id);
+  makeTag('button', 'button__clip', li);
 };
 
 const getData = async () => {
   const fetchData = await fetch('https://jsonplaceholder.typicode.com/posts');
   const responseData = await fetchData.json();
-  console.log(responseData);
   const arrayOfPosts = responseData.map((element) => element);
-  arrayOfPosts.forEach((element) => {
+  arrayOfPosts.slice(start, end).forEach((element) => {
     createPost(element);
   });
-  console.log(arrayOfPosts);
 };
 
 getData();
+
+buttonPrev.addEventListener('click', () => {
+  postsList.innerHTML = '';
+  getData();
+  if (count === 1) {
+    count = 1;
+  } else {
+    start -= 10;
+    end -= 10;
+    count--;
+  }
+});
+
+buttonNext.addEventListener('click', () => {
+  postsList.innerHTML = '';
+  getData();
+  count++;
+  start += 10;
+  end += 10;
+});
+
+buttonClip.addEventListener('click', () => {
+  console.log('data');
+});

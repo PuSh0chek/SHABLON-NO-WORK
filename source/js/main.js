@@ -1,8 +1,6 @@
 const postsContainer = document.querySelector('.posts');
 const postsList = document.querySelector('.posts__list');
 
-const arrayOfPosts = [];
-
 const makeTag = (tagName, tagClass, placeAdd, tagContent = '') => {
   const element = document.createElement(tagName);
   element.classList.add(tagClass);
@@ -11,19 +9,21 @@ const makeTag = (tagName, tagClass, placeAdd, tagContent = '') => {
   return element;
 };
 
-const createPost = (element) => {
+const createPost = ({ id, title, body}) => {
   const li = makeTag('li', 'posts__element', postsList);
-  const id = makeTag('span', 'posts__id', li, element.id);
-  const title = makeTag('h3', 'posts__title', li, element.title);
-  const text = makeTag('p', 'posts__text', li, element.body);
+  makeTag('h3', 'posts__title', li, title);
+  makeTag('p', 'posts__text', li, body);
+  makeTag('span', 'posts__id', li, id);
 };
 
 const getData = async () => {
   const fetchData = await fetch('https://jsonplaceholder.typicode.com/posts');
   const responseData = await fetchData.json();
-  console.log(arrayOfPosts);
   console.log(responseData);
-  arrayOfPosts.push([...responseData]);
+  const arrayOfPosts = responseData.map((element) => element);
+  arrayOfPosts.forEach((element) => {
+    createPost(element);
+  });
   console.log(arrayOfPosts);
 };
 

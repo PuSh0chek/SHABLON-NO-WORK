@@ -1,11 +1,11 @@
-@include font("PTMono", "PTMono-Regular", 400);
-@include font("RobotoCondensed", "RobotoCondensed-Regular", 400);
-@include font("RobotoCondensed", "RobotoCondensed-Bold", 700);
+@include font("OpenSans", "OpenSans-Regular", 400);
+@include font("OpenSans Bold", "OpenSans-Bold", 700);
+@include font("OpenSans Light", "OpenSans-Light", 300);
 
 .html {
   height: 100%;
 
-  font-family: "RobotoCondensed", "Arial", sans-serif;
+  font-family: "OpenSans", "Arial", sans-serif;
   font-size: 14px;
   line-height: 16.41px;
   font-weight: 400;

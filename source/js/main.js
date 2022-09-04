@@ -2,7 +2,6 @@ const postsContainer = document.querySelector('.posts');
 const postsList = document.querySelector('.posts__list');
 const buttonPrev = document.querySelector('.button__prev');
 const buttonNext = document.querySelector('.button__next');
-const buttonClip = document.querySelectorAll('.button__clip');
 
 let count = 1;
 let start = 0;
@@ -16,7 +15,7 @@ const makeTag = (tagName, tagClass, placeAdd, tagContent = '') => {
   return element;
 };
 
-const createPost = ({id, title, body}) => {
+const createPost = ({ id, title, body }) => {
   const li = makeTag('li', 'posts__element', postsList);
   makeTag('span', 'posts__id', li, id);
   makeTag('h3', 'posts__title', li, title);
@@ -30,6 +29,10 @@ const getData = async () => {
   const arrayOfPosts = responseData.map((element) => element);
   arrayOfPosts.slice(start, end).forEach((element) => {
     createPost(element);
+  });
+  const buttonClip = document.querySelectorAll('.button__clip');
+  buttonClip.addEventListener('click', () => {
+    console.log('data');
   });
 };
 
@@ -53,8 +56,4 @@ buttonNext.addEventListener('click', () => {
   count++;
   start += 10;
   end += 10;
-});
-
-buttonClip.addEventListener('click', () => {
-  console.log('data');
 });

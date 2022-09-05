@@ -2,6 +2,7 @@ const postsContainer = document.querySelector('.posts');
 const postsList = document.querySelector('.posts__list');
 const buttonPrev = document.querySelector('.button__prev');
 const buttonNext = document.querySelector('.button__next');
+const buttonNew = document.querySelector('.button__new');
 
 let count = 1;
 let start = 0;
@@ -57,3 +58,7 @@ buttonNext.addEventListener('click', () => {
   start += 10;
   end += 10;
 });
+
+buttonNew.addEventListener('click', () => {
+  
+})

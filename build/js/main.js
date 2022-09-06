@@ -38,19 +38,24 @@ const getData = async () => {
   const arrayOfPosts = responseData.map(element => element);
   arrayOfPosts.slice(start, end).forEach(element => {
     createPost(element);
-  }); // const buttonClip = document.querySelectorAll('.button__clip');
-  // buttonClip.addEventListener('click', () => {
-  //   console.log('data');
-  // });
+  });
+  const buttonsClip = document.querySelectorAll('.button__clip');
+
+  for (const buttonClip of buttonsClip) {
+    buttonClip.addEventListener('click', () => {
+      const parent = buttonClip.parentElement;
+      parent.remove();
+    });
+  }
 };
 
 getData();
 buttonPrev.addEventListener('click', () => {
   postsList.innerHTML = '';
-  getData();
 
   if (count === 1) {
     count = 1;
+    buttonPrev.disabled = true;
   } else {
     start -= 10;
     end -= 10;
@@ -59,10 +64,10 @@ buttonPrev.addEventListener('click', () => {
 });
 buttonNext.addEventListener('click', () => {
   postsList.innerHTML = '';
-  getData();
   count++;
   start += 10;
   end += 10;
+  buttonPrev.disabled = false;
 });
 buttonNew.addEventListener('click', () => {
   createPost(newPostId); // const li = makeTag('li', 'posts__element', postsList);

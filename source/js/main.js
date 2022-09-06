@@ -33,8 +33,8 @@ const getData = async () => {
     createPost(element);
   });
   const buttonClip = document.querySelectorAll('.button__clip');
-  for (buttonClip of buttonsClip) {
-    buttonClip.addEventListener('click', () => {
+  for (const buttonsClip of buttonClip) {
+    buttonsClip.addEventListener('click', () => {
       console.log('data');
     });
   }

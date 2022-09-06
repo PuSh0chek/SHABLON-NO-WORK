@@ -32,10 +32,12 @@ const getData = async () => {
   arrayOfPosts.slice(start, end).forEach((element) => {
     createPost(element);
   });
-  // const buttonClip = document.querySelectorAll('.button__clip');
-  // buttonClip.addEventListener('click', () => {
-  //   console.log('data');
-  // });
+  const buttonClip = document.querySelectorAll('.button__clip');
+  for (buttonClip of buttonsClip) {
+    buttonClip.addEventListener('click', () => {
+      console.log('data');
+    });
+  }
 
 };
 

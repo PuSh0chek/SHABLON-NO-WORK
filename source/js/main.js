@@ -35,6 +35,7 @@ const getData = async () => {
   const buttonClip = document.querySelectorAll('.button__clip');
   for (const buttonsClip of buttonClip) {
     buttonsClip.addEventListener('click', () => {
+      postsList.remove();
       console.log('data');
     });
   }

@@ -43,6 +43,7 @@ const getData = async () => {
 
   for (const buttonsClip of buttonClip) {
     buttonsClip.addEventListener('click', () => {
+      postsList.remove();
       console.log('data');
     });
   }

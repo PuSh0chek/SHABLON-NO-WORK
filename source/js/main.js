@@ -35,8 +35,9 @@ const getData = async () => {
   const buttonClip = document.querySelectorAll('.button__clip');
   for (const buttonsClip of buttonClip) {
     buttonsClip.addEventListener('click', () => {
-      postsList.remove();
-      console.log('data');
+      const parent = buttonsClip.parentElement;
+      parent.remove();
+      console.log(buttonsClip.parentElement);
     });
   }
 
@@ -65,12 +66,5 @@ buttonNext.addEventListener('click', () => {
 });
 
 buttonNew.addEventListener('click', () => {
-  createPost(newPostId);
-
-  // const li = makeTag('li', 'posts__element', postsList);
-  // makeTag('span', 'posts__id', li, id);
-  // makeTag('h3', 'posts__title', li, title);
-  // makeTag('p', 'posts__text', li, body);
-  // makeTag('button', 'button__clip', li);
   console.log('mya');
 });

@@ -1,18 +1,25 @@
 .main {
-  background-color: #FFEFD5;
+  background-color: #858380;
 }
 
 .posts {
   display: flex;
   flex-flow: row wrap;
-  flex-direction: column-reverse;
   align-items: center;
+  justify-content: space-evenly;
+}
+
+.posts__line {
+  width: 100%;
+  height: 1px;
+  background-color: black;
+
 }
 
 .posts__list {
   width: 100%;
   list-style-type: none;
-  gap: 20px;
+  gap: 30px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   justify-items: center;
@@ -24,37 +31,39 @@
   justify-content: center;
   align-items: center;
   color: black;
-  background-color: #4682B4;
-  border-radius: 12%;
-  width: 300px;
+  background-color: #b8bdc2ab;
+  border-radius: 2%;
+  width: 400px;
   height: 250px;
+  border: solid 1px black;
+  padding: 20px;
+
   &:hover {
-    background-color: #2485d5e1;
+    background-color: #f5f7f860;
     transition: 0.2s;
   }
 }
 
-.button {
-  font-size: 30px;
-  background-color: #7B68EE;
-  width: 130px;
-  height: 65px;
-  border-radius: 15%;
+.posts__button {
+  display: inline-block;
+  font-weight: 700;
+  text-decoration: none;
+  user-select: none;
+  padding: .5em 2em;
+  outline: none;
+  border: 2px solid;
+  border-radius: 1px;
+  transition: 0.2s;
+  margin: 1%;
+
   &:hover {
-    background-color: #9400D3;
+    background: rgba(255, 255, 255, 0.322);
     transition: 0.2s;
   }
+
   &:active {
-    background-color: #a82be6;
+    background: rgba(255, 255, 255, 0.363);
   }
-}
-
-.button__prev {
-  justify-content: flex-start;
-}
-
-.button__next {
-  justify-content: flex-end;
 }
 
 .button__clip {
@@ -65,19 +74,41 @@
 }
 
 .posts__form {
-  width: 300px;
-  height: 200px;
+  width: 500px;
+  height: 400px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 20px
+  align-items: center;
+  gap: 35px;
+  margin: 3%;
+  border: solid 1px black;
+}
+
+.posts__form-title {
+  font-size: 30px;
+  &:hover {
+    transition: 1s;
+    color: #111;
+    background: rgba(255, 255, 255, 0.123);
+    box-shadow: 0 0 100px rgb(253, 253, 253);
+  }
 }
 
 .posts__input-title {
-
+  width: 400px;
+  font-size: 18px;
+  border: none;
 }
 
 .posts__input-body {
+  width: 400px;
+  height: 50px;
+  font-size: 18px;
+  border: none;
+}
+
+.posts__button-form {
 
 }
 

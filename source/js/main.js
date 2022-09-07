@@ -3,11 +3,14 @@ const postsList = document.querySelector('.posts__list');
 const buttonPrev = document.querySelector('.button__prev');
 const buttonNext = document.querySelector('.button__next');
 const buttonNew = document.querySelector('.button__new');
+const buttonAddPost = document.querySelector('.posts__button-add');
+const buttonCleaningForm = document.querySelector('.posts__cleaning-form');
 
 let count = 1;
 let start = 0;
 let end = 10;
 const newPostId = end - 1;
+let countPage = 
 
 const makeTag = (tagName, tagClass, placeAdd, tagContent = '') => {
   const element = document.createElement(tagName);
@@ -50,21 +53,24 @@ buttonPrev.addEventListener('click', () => {
   getData();
   if (count === 1) {
     count = 1;
+    buttonPrev.disabled = true;
   } else {
     start -= 10;
     end -= 10;
     count--;
+    buttonNext.disabled = false;
   }
 });
 
 buttonNext.addEventListener('click', () => {
   postsList.innerHTML = '';
   getData();
-  count++;
-  start += 10;
-  end += 10;
-});
+  if (count !== 1) {
+    count++;
+    start += 10;
+    end += 10;
+    buttonPrev.disabled = false;
+  } else {
 
-buttonNew.addEventListener('click', () => {
-  console.log('mya');
+  }
 });

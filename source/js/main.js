@@ -77,7 +77,7 @@ buttonAddPost.addEventListener('click', () => {
   makeTag('h3', 'posts__title', li, title);
   makeTag('p', 'posts__text', li, content);
   makeTag('button', 'button__clip', li);
-});
+})
 
 buttonCleaningForm.addEventListener('click', () => {
   inputTitleInForm.value = '';

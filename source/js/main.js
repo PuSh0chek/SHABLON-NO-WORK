@@ -44,12 +44,10 @@ const getData = async () => {
   }
 
 };
-
 getData();
 
 buttonPrev.addEventListener('click', () => {
   postsList.innerHTML = '';
-  getData();
   if (count === 1) {
     start = 0;
     end = 10;
@@ -65,7 +63,6 @@ buttonPrev.addEventListener('click', () => {
 
 buttonNext.addEventListener('click', () => {
   postsList.innerHTML = '';
-  getData();
   count++;
   start += 10;
   end += 10;

@@ -1,4 +1,8 @@
 .main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   background-color: #49484657;
 }
 
@@ -8,6 +12,14 @@
   align-items: center;
   justify-content: space-around;
 }
+
+.posts__search {
+  width: 300px;
+  margin: 20px;
+  border: none;
+}
+
+.main__title-project {}
 
 .posts__list {
   width: 100%;
@@ -100,11 +112,14 @@
 
 .posts__input-title {
   width: 300px;
+  border: none;
 }
+
 
 .posts__input-body {
   width: 300px;
   height: 250px;
+  border: none;
 }
 
 .posts__button-add {

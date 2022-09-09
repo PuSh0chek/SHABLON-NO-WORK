@@ -42,7 +42,7 @@ const getData = async () => {
   for (const buttonsClip of buttonClip) {
     buttonsClip.addEventListener('click', () => {
       const parent = buttonsClip.parentElement;
-        parent.remove();
+      parent.remove();
     });
   };
 };
@@ -53,9 +53,9 @@ const pushOfArray = (input, array) => {
   array.push(arrayPush);
 };
 
-const sliceArrays = () => {
-  const arrayOfPosts.push(pushOfArray);
-}
+// const sliceArrays = () => {
+//   const arrayOfPosts.push(pushOfArray);
+// }
 
 buttonAddPost.addEventListener('click', () => {
   pushOfArray(inputTitle, arrayCreatedPost);

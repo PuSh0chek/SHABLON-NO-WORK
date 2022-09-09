@@ -42,7 +42,7 @@ const getData = async () => {
   for (const buttonsClip of buttonClip) {
     buttonsClip.addEventListener('click', () => {
       const parent = buttonsClip.parentElement;
-      parent.remove();
+        parent.remove();
     });
   };
 };

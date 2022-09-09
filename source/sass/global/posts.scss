@@ -5,7 +5,7 @@
 .posts {
   display: flex;
   flex-flow: row wrap;
-  justify-content: center;
+  flex-direction: column-reverse;
   align-items: center;
 }
 
@@ -35,11 +35,11 @@
 }
 
 .button {
+  font-size: 30px;
   background-color: #7B68EE;
-  width: 50px;
-  height: 35px;
-
-  border-radius: 10%;
+  width: 130px;
+  height: 65px;
+  border-radius: 15%;
   &:hover {
     background-color: #9400D3;
     transition: 0.2s;
@@ -64,4 +64,27 @@
   cursor: pointer;
 }
 
-.
+.posts__form {
+  width: 300px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px
+}
+
+.posts__input-title {
+
+}
+
+.posts__input-body {
+
+}
+
+.posts__button-add {
+
+}
+
+.posts__cleaning-form {
+
+}

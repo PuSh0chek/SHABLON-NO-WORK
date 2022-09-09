@@ -1,9 +1,8 @@
 const postsContainer = document.querySelector('.posts');
 const postsList = document.querySelector('.posts__list');
-const buttonPrev = document.querySelector('.posts__button-prev');
-const buttonNext = document.querySelector('.posts__button-next');
-const inputTitleInForm = document.querySelector('.posts__input-title');
-const inputContentInForm = document.querySelector('.posts__input-body');
+const buttonPrev = document.querySelector('.button__prev');
+const buttonNext = document.querySelector('.button__next');
+const buttonNew = document.querySelector('.button__new');
 const buttonAddPost = document.querySelector('.posts__button-add');
 const buttonCleaningForm = document.querySelector('.posts__cleaning-form');
 
@@ -49,8 +48,6 @@ getData();
 buttonPrev.addEventListener('click', () => {
   postsList.innerHTML = '';
   if (count === 1) {
-    start = 0;
-    end = 10;
     count = 1;
     buttonPrev.disabled = true;
   } else {
@@ -63,23 +60,13 @@ buttonPrev.addEventListener('click', () => {
 
 buttonNext.addEventListener('click', () => {
   postsList.innerHTML = '';
-  count++;
-  start += 10;
-  end += 10;
-  buttonPrev.disabled = false;
-});
+  getData();
+  if (count !== 1) {
+    count++;
+    start += 10;
+    end += 10;
+    buttonPrev.disabled = false;
+  } else {
 
-buttonAddPost.addEventListener('click', () => {
-  const title = inputTitleInForm.value;
-  const content = inputContentInForm.value;
-  makeTag('li', 'posts__element', postsList);
-  makeTag('span', 'posts__id', li, id);
-  makeTag('h3', 'posts__title', li, title);
-  makeTag('p', 'posts__text', li, content);
-  makeTag('button', 'button__clip', li);
-})
-
-buttonCleaningForm.addEventListener('click', () => {
-  inputTitleInForm.value = '';
-  inputContentInForm.value = '';
+  }
 });

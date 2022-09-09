@@ -2,9 +2,9 @@ const postsContainer = document.querySelector('.posts');
 const postsList = document.querySelector('.posts__list');
 const buttonPrev = document.querySelector('.button__prev');
 const buttonNext = document.querySelector('.button__next');
-const buttonNew = document.querySelector('.button__new');
+const inputTitle = document.querySelector('.posts__input-title');
+const inputContent = document.querySelector('.posts__input-body');
 const buttonAddPost = document.querySelector('.posts__button-add');
-const buttonCleaningForm = document.querySelector('.posts__cleaning-form');
 
 let count = 1;
 let start = 0;
@@ -42,10 +42,24 @@ const getData = async () => {
       const parent = buttonsClip.parentElement;
       parent.remove();
     });
-  }
-
+  };
 };
 getData();
+
+const pushOfArray = (input, array) => {
+  const arrayPush = input.value;
+  array.push(arrayPush);
+};
+
+const sliceArrays = () => {
+  const arrayLength = arrayOfPosts.length;
+  const arrayOfPosts.push(pushOfArray, arrayLength);
+}
+
+buttonAddPost.addEventListener('click', () => {
+  pushOfArray(inputTitle, arrayOfNewPost);
+  pushOfArray(inputContent, arrayOfNewPost);
+});
 
 buttonPrev.addEventListener('click', () => {
   getData();

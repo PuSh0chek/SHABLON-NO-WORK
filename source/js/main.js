@@ -2,6 +2,7 @@ const postsContainer = document.querySelector('.posts');
 const postsList = document.querySelector('.posts__list');
 const buttonPrev = document.querySelector('.button__prev');
 const buttonNext = document.querySelector('.button__next');
+const form = document.querySelector('.posts__form');
 const inputTitle = document.querySelector('.posts__input-title');
 const inputContent = document.querySelector('.posts__input-body');
 const buttonAddPost = document.querySelector('.posts__button-add');
@@ -11,7 +12,7 @@ let start = 0;
 let end = 10;
 const newPostId = end - 1;
 
-const arrayOfNewPost = [];
+const arrayCreatedPost = [];
 
 const makeTag = (tagName, tagClass, placeAdd, tagContent = '') => {
   const element = document.createElement(tagName);
@@ -36,6 +37,7 @@ const getData = async () => {
   arrayOfPosts.slice(start, end).forEach((element) => {
     createPost(element);
   });
+
   const buttonClip = document.querySelectorAll('.button__clip');
   for (const buttonsClip of buttonClip) {
     buttonsClip.addEventListener('click', () => {
@@ -52,14 +54,17 @@ const pushOfArray = (input, array) => {
 };
 
 const sliceArrays = () => {
-  const arrayLength = arrayOfPosts.length;
-  const arrayOfPosts.push(pushOfArray, arrayLength);
+  const arrayOfPosts.push(pushOfArray);
 }
 
 buttonAddPost.addEventListener('click', () => {
-  pushOfArray(inputTitle, arrayOfNewPost);
-  pushOfArray(inputContent, arrayOfNewPost);
+  pushOfArray(inputTitle, arrayCreatedPost);
+  pushOfArray(inputContent, arrayCreatedPost);
 });
+
+form.addEventListener('click', evt => {
+  evt.preventDefault();
+})
 
 buttonPrev.addEventListener('click', () => {
   getData();

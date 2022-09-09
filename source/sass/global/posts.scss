@@ -1,90 +1,116 @@
 .main {
-  background-color: #FFEFD5;
+  background-color: #49484657;
 }
 
 .posts {
   display: flex;
-  flex-flow: row wrap;
-  flex-direction: column-reverse;
+  flex-wrap: wrap;
   align-items: center;
+  justify-content: space-around;
 }
 
 .posts__list {
   width: 100%;
   list-style-type: none;
-  gap: 20px;
+  gap: 35px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   justify-items: center;
 }
 
+.posts-line {
+  border: solid 0.5px black;
+  width: 100%;
+  margin: 20px 0;
+}
+
 .posts__element {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
-  color: black;
-  background-color: #4682B4;
-  border-radius: 12%;
-  width: 300px;
-  height: 250px;
+  color: #000;
+  background-color: rgba(79, 80, 80, .5882352941);
+  border-radius: 3%;
+  width: 450px;
+  height: 300px;
+
   &:hover {
-    background-color: #2485d5e1;
+    background-color: #4f505062;
     transition: 0.2s;
   }
 }
 
 .button {
-  font-size: 30px;
-  background-color: #7B68EE;
-  width: 130px;
-  height: 65px;
-  border-radius: 15%;
+  width: 155px;
+  height: 50px;
+  display: inline-block;
+  color: rgb(0, 0, 0);
+  font-weight: 700;
+  text-decoration: none;
+  user-select: none;
+  padding: .5em 2em;
+  outline: none;
+  border: 2px solid;
+  border-radius: 1px;
+  transition: 0.2s;
+
   &:hover {
-    background-color: #9400D3;
+    background: rgba(255, 255, 255, .2);
     transition: 0.2s;
   }
+
   &:active {
-    background-color: #a82be6;
+    background: white;
   }
 }
 
-.button__prev {
-  justify-content: flex-start;
-}
+.button__prev {}
 
-.button__next {
-  justify-content: flex-end;
-}
+.button__next {}
 
 .button__clip {
-  width: 25px;
-  height: 25px;
-  background-image: url('/img/delete-svgrepo-com.svg');
+  width: 35px;
+  height: 35px;
+  transition: .25s;
+  border-radius: 10%;
+  background-image: url('/img/basket.svg');
   cursor: pointer;
+
+  &:hover {
+    background-image: url('/img/basket-activ.svg');
+  }
 }
 
 .posts__form {
-  width: 300px;
-  height: 200px;
+  margin: 50px;
+  width: 500px;
+  height: 600px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 20px
+  align-items: center;
+  border: solid 3px black;
+  border-radius: 1%;
+}
+
+.posts__title-form {
+  font-size: 25px;
 }
 
 .posts__input-title {
-
+  width: 300px;
 }
 
 .posts__input-body {
-
+  width: 300px;
+  height: 250px;
 }
 
 .posts__button-add {
-
+  margin: 5px;
 }
 
 .posts__cleaning-form {
-
+  margin: 5px;
 }

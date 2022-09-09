@@ -19,13 +19,17 @@
   <main class="main">
     <div class="posts">
       <ul class="posts__list"></ul>
+      <div class="posts-line"></div>
       <button class="button button__prev" disabled>Prev</button>
       <button class="button button__next">Next</button>
+      <div class="posts-line"></div>
       <form class="posts__form">
-        <input class="posts__input-title" type="text" name="" id="">
-        <input class="posts__input-body" type="text" name="" id="">
-        <button class="posts__button-add" >Добавить пост</button>
-        <button class="posts__cleaning-form" >Очистка формы</button>
+        <h3 class="posts__title-form">Creat new post</h3>
+        <div class="posts-line"></div>
+        <input class="posts__input-title" name="title" type="text" placeholder="Title of post">
+        <p><textarea class="posts__input-body" name="content" type="text" placeholder="Content of post"></textarea></p>
+        <button class="button posts__button-add" >Add post</button>
+        <button type="reset" class="button posts__cleaning-form" >Clean form</button>
       </form>
     </div>
   </main>

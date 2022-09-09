@@ -11,6 +11,8 @@ let start = 0;
 let end = 10;
 const newPostId = end - 1;
 
+const arrayOfNewPost = [];
+
 const makeTag = (tagName, tagClass, placeAdd, tagContent = '') => {
   const element = document.createElement(tagName);
   element.classList.add(tagClass);
@@ -46,6 +48,7 @@ const getData = async () => {
 getData();
 
 buttonPrev.addEventListener('click', () => {
+  getData();
   postsList.innerHTML = '';
   if (count === 1) {
     count = 1;
@@ -59,14 +62,10 @@ buttonPrev.addEventListener('click', () => {
 });
 
 buttonNext.addEventListener('click', () => {
-  postsList.innerHTML = '';
   getData();
-  if (count !== 1) {
-    count++;
-    start += 10;
-    end += 10;
-    buttonPrev.disabled = false;
-  } else {
-
-  }
+  postsList.innerHTML = '';
+  count++;
+  start += 10;
+  end += 10;
+  buttonPrev.disabled = false;
 });

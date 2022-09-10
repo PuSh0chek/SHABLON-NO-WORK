@@ -4,12 +4,14 @@ const postsContainer = document.querySelector('.posts');
 const postsList = document.querySelector('.posts__list');
 const buttonPrev = document.querySelector('.button__prev');
 const buttonNext = document.querySelector('.button__next');
+const form = document.querySelector('.posts__form');
 const inputTitle = document.querySelector('.posts__input-title');
 const inputContent = document.querySelector('.posts__input-body');
 const buttonAddPost = document.querySelector('.posts__button-add');
 let count = 1;
 let start = 0;
 let end = 10;
+const arrayCreatedPost = [];
 
 const makeTag = function (tagName, tagClass, placeAdd) {
   let tagContent = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : '';
@@ -51,6 +53,22 @@ const getData = async () => {
 };
 
 getData();
+
+const pushOfArray = (input, array) => {
+  const arrayPush = input.value;
+  array.push(arrayPush);
+}; // const sliceArrays = () => {
+//   const arrayOfPosts.push(pushOfArray);
+// }
+
+
+buttonAddPost.addEventListener('click', () => {
+  pushOfArray(inputTitle, arrayCreatedPost);
+  pushOfArray(inputContent, arrayCreatedPost);
+});
+form.addEventListener('click', evt => {
+  evt.preventDefault();
+});
 buttonPrev.addEventListener('click', () => {
   getData();
   postsList.innerHTML = '';

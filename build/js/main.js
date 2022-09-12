@@ -8,9 +8,10 @@ const form = document.querySelector('.posts__form');
 const inputTitle = document.querySelector('.posts__input-title');
 const inputContent = document.querySelector('.posts__input-body');
 const buttonAddPost = document.querySelector('.posts__button-add');
+const buttonCleaningForm = document.querySelector('.posts__cleaning-form');
 let count = 1;
-let start = 0;
-let end = 10;
+let start = (count - 1) * 10;
+let end = count * 10;
 const arrayCreatedPost = [];
 
 const makeTag = function (tagName, tagClass, placeAdd) {
@@ -70,7 +71,6 @@ form.addEventListener('click', evt => {
   evt.preventDefault();
 });
 buttonPrev.addEventListener('click', () => {
-  getData();
   postsList.innerHTML = '';
 
   if (count === 1) {
@@ -82,12 +82,14 @@ buttonPrev.addEventListener('click', () => {
     count--;
     buttonNext.disabled = false;
   }
+
+  getData();
 });
 buttonNext.addEventListener('click', () => {
-  getData();
   postsList.innerHTML = '';
   count++;
   start += 10;
   end += 10;
   buttonPrev.disabled = false;
+  getData();
 });

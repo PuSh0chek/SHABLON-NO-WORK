@@ -58,55 +58,59 @@ const getData = async () => {
   inputSearch.addEventListener('input', () => {
     postsList.innerHTML = '';
     arrayOfPosts.filter((element) => {
-      if (element.title.includes) {
-        
-      });
-  }
+      if (element.title.includes(inputSearch.value)) {
+        const post = printPost(element);
+        postsList.appendChild(post);
+      };
+    });
     console.log(arrayOfPosts);
-});
+  });
 
-buttonNext.addEventListener('click', () => {
-  postsList.innerHTML = '';
-  inputTitle.value = '';
-  inputContent.value = '';
-  count++;
-  start += 10;
-  end += 10;
-  buttonPrev.disabled = false;
-  const quantityOfPosts = filterArraytForPost(arrayOfPosts);
-  const quantityOfPostsOnNextPage = arrayOfPosts.slice(count * 10, (count + 1) * 10);
-  quantityOfPosts <= 10 || quantityOfPostsOnNextPage <= 1 ? buttonNext.classList.add('disabled') : buttonNext.classList.remove('disabled');
-});
+  buttonNext.addEventListener('click', () => {
+    postsList.innerHTML = '';
+    inputTitle.value = '';
+    inputContent.value = '';
+    count++;
+    start += 10;
+    end += 10;
+    buttonPrev.disabled = false;
+    const quantityOfPosts = filterArraytForPost(arrayOfPosts);
+    const quantityOfPostsOnNextPage = arrayOfPosts.slice(count * 10, (count + 1) * 10);
+    quantityOfPosts <= 10 || quantityOfPostsOnNextPage <= 1 ? buttonNext.classList.add('disabled') : buttonNext.classList.remove('disabled');
+  });
 
-buttonPrev.addEventListener('click', () => {
-  postsList.innerHTML = '';
-  inputTitle.value = '';
-  inputContent.value = '';
-  if (count === 1) {
-    count = 1;
-    buttonPrev.disabled = true;
-  } else {
-    start -= 10;
-    end -= 10;
-    count--;
-    buttonNext.disabled = false;
-  }
-  filterArraytForPost(arrayOfPosts);
-});
+  buttonPrev.addEventListener('click', () => {
+    postsList.innerHTML = '';
+    inputTitle.value = '';
+    inputContent.value = '';
+    if (count === 1) {
+      count = 1;
+      buttonPrev.disabled = true;
+    } else {
+      start -= 10;
+      end -= 10;
+      count--;
+      buttonNext.disabled = false;
+    }
+    filterArraytForPost(arrayOfPosts);
+  });
 
-buttonAddPost.addEventListener('click', () => {
-  pushOfArray(inputTitle, arrayCreatedPost);
-  pushOfArray(inputContent, arrayCreatedPost);
-});
+  buttonAddPost.addEventListener('click', () => {
+    pushOfArray(inputTitle, arrayCreatedPost);
+    pushOfArray(inputContent, arrayCreatedPost);
 
-form.addEventListener('submit', (evt) => {
-  evt.preventDefault();
-  const newPost = {
-    id: arrayOfPosts.length,
-    title: inputTitle.value,
-    body: inputContent.value,
-  };
-});
+    inputTitle.value = '';
+    inputContent.value = '';
+  });
+
+  form.addEventListener('submit', (evt) => {
+    evt.preventDefault();
+    const newPost = {
+      id: arrayOfPosts.length,
+      title: inputTitle.value,
+      body: inputContent.value,
+    };
+  });
 };
 getData();
 

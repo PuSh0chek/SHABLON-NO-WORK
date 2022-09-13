@@ -64,7 +64,12 @@ const getData = async () => {
 
   inputSearch.addEventListener('input', () => {
     postsList.innerHTML = '';
-    arrayOfPosts.filter(element => {});
+    arrayOfPosts.filter(element => {
+      if (element.title.includes(inputSearch.value)) {
+        const post = printPost(element);
+        postsList.appendChild(post);
+      }
+    });
     console.log(arrayOfPosts);
   });
   buttonNext.addEventListener('click', () => {
@@ -99,6 +104,8 @@ const getData = async () => {
   buttonAddPost.addEventListener('click', () => {
     pushOfArray(inputTitle, arrayCreatedPost);
     pushOfArray(inputContent, arrayCreatedPost);
+    inputTitle.value = '';
+    inputContent.value = '';
   });
   form.addEventListener('submit', evt => {
     evt.preventDefault();

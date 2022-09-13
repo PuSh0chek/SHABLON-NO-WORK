@@ -37,13 +37,17 @@ const createPost = _ref => {
   makeTag('button', 'button__clip', li);
 };
 
+const filterArraytForPost = array => {
+  array.slice(start, end).forEach(element => {
+    createPost(element);
+  });
+};
+
 const getData = async () => {
   const fetchData = await fetch('https://jsonplaceholder.typicode.com/posts');
   const responseData = await fetchData.json();
   const arrayOfPosts = responseData.map(element => element);
-  arrayOfPosts.slice(start, end).forEach(element => {
-    createPost(element);
-  });
+  filterArraytForPost(arrayOfPosts);
   const buttonClip = document.querySelectorAll('.button__clip');
 
   for (const buttonsClip of buttonClip) {
@@ -59,7 +63,8 @@ const getData = async () => {
   };
 
   inputSearch.addEventListener('input', () => {
-    arrayOfPosts.filter(element => inputSearch.value);
+    postsList.innerHTML = '';
+    arrayOfPosts.filter(element => {});
     console.log(arrayOfPosts);
   });
   buttonNext.addEventListener('click', () => {
@@ -70,9 +75,7 @@ const getData = async () => {
     start += 10;
     end += 10;
     buttonPrev.disabled = false;
-    const quantityOfPosts = arrayOfPosts.slice(start, end).forEach(element => {
-      createPost(element);
-    });
+    const quantityOfPosts = filterArraytForPost(arrayOfPosts);
     const quantityOfPostsOnNextPage = arrayOfPosts.slice(count * 10, (count + 1) * 10);
     quantityOfPosts <= 10 || quantityOfPostsOnNextPage <= 1 ? buttonNext.classList.add('disabled') : buttonNext.classList.remove('disabled');
   });
@@ -91,9 +94,7 @@ const getData = async () => {
       buttonNext.disabled = false;
     }
 
-    arrayOfPosts.slice(start, end).forEach(element => {
-      createPost(element);
-    });
+    filterArraytForPost(arrayOfPosts);
   });
   buttonAddPost.addEventListener('click', () => {
     pushOfArray(inputTitle, arrayCreatedPost);

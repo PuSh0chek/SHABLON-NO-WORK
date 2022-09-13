@@ -31,13 +31,17 @@ const createPost = ({ id, title, body }) => {
   makeTag('button', 'button__clip', li);
 };
 
+const filterArraytForPost = (array) => {
+  array.slice(start, end).forEach((element) => {
+    createPost(element);
+  });
+};
+
 const getData = async () => {
   const fetchData = await fetch('https://jsonplaceholder.typicode.com/posts');
   const responseData = await fetchData.json();
   const arrayOfPosts = responseData.map((element) => element);
-  arrayOfPosts.slice(start, end).forEach((element) => {
-    createPost(element);
-  });
+  filterArraytForPost(arrayOfPosts);
   const buttonClip = document.querySelectorAll('.button__clip');
   for (const buttonsClip of buttonClip) {
     buttonsClip.addEventListener('click', () => {
@@ -45,62 +49,64 @@ const getData = async () => {
       parent.remove();
     });
   };
+
   const pushOfArray = (input, array) => {
     const arrayPush = input.value;
     array.push(arrayPush);
   };
 
   inputSearch.addEventListener('input', () => {
-    arrayOfPosts.filter((element) => inputSearch.value);
+    postsList.innerHTML = '';
+    arrayOfPosts.filter((element) => {
+      if (element.title.includes) {
+        
+      });
+  }
     console.log(arrayOfPosts);
-  });
+});
 
-  buttonNext.addEventListener('click', () => {
-    postsList.innerHTML = '';
-    inputTitle.value = '';
-    inputContent.value = '';
-    count++;
-    start += 10;
-    end += 10;
-    buttonPrev.disabled = false;
-    const quantityOfPosts = arrayOfPosts.slice(start, end).forEach((element) => {
-      createPost(element);
-    });
-    const quantityOfPostsOnNextPage = arrayOfPosts.slice(count * 10, (count + 1) * 10);
-    quantityOfPosts <= 10 || quantityOfPostsOnNextPage <= 1 ? buttonNext.classList.add('disabled') : buttonNext.classList.remove('disabled');
-  });
+buttonNext.addEventListener('click', () => {
+  postsList.innerHTML = '';
+  inputTitle.value = '';
+  inputContent.value = '';
+  count++;
+  start += 10;
+  end += 10;
+  buttonPrev.disabled = false;
+  const quantityOfPosts = filterArraytForPost(arrayOfPosts);
+  const quantityOfPostsOnNextPage = arrayOfPosts.slice(count * 10, (count + 1) * 10);
+  quantityOfPosts <= 10 || quantityOfPostsOnNextPage <= 1 ? buttonNext.classList.add('disabled') : buttonNext.classList.remove('disabled');
+});
 
-  buttonPrev.addEventListener('click', () => {
-    postsList.innerHTML = '';
-    inputTitle.value = '';
-    inputContent.value = '';
-    if (count === 1) {
-      count = 1;
-      buttonPrev.disabled = true;
-    } else {
-      start -= 10;
-      end -= 10;
-      count--;
-      buttonNext.disabled = false;
-    }
-    arrayOfPosts.slice(start, end).forEach((element) => {
-      createPost(element);
-    });
-  });
+buttonPrev.addEventListener('click', () => {
+  postsList.innerHTML = '';
+  inputTitle.value = '';
+  inputContent.value = '';
+  if (count === 1) {
+    count = 1;
+    buttonPrev.disabled = true;
+  } else {
+    start -= 10;
+    end -= 10;
+    count--;
+    buttonNext.disabled = false;
+  }
+  filterArraytForPost(arrayOfPosts);
+});
 
-  buttonAddPost.addEventListener('click', () => {
-    pushOfArray(inputTitle, arrayCreatedPost);
-    pushOfArray(inputContent, arrayCreatedPost);
-  });
+buttonAddPost.addEventListener('click', () => {
+  pushOfArray(inputTitle, arrayCreatedPost);
+  pushOfArray(inputContent, arrayCreatedPost);
+});
 
-  form.addEventListener('submit', (evt) => {
-    evt.preventDefault();
-    const newPost = {
-      id: arrayOfPosts.length,
-      title: inputTitle.value,
-      body: inputContent.value,
-    };
-  });
+form.addEventListener('submit', (evt) => {
+  evt.preventDefault();
+  const newPost = {
+    id: arrayOfPosts.length,
+    title: inputTitle.value,
+    body: inputContent.value,
+  };
+});
 };
 getData();
 

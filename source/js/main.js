@@ -5,6 +5,7 @@ const buttonNext = document.querySelector('.button__next');
 const form = document.querySelector('.posts__form');
 const inputTitle = document.querySelector('.posts__input-title');
 const inputContent = document.querySelector('.posts__input-body');
+const inputSearch = document.querySelector('.posts__search');
 const buttonAddPost = document.querySelector('.posts__button-add');
 const buttonCleaningForm = document.querySelector('.posts__cleaning-form');
 
@@ -44,51 +45,66 @@ const getData = async () => {
       parent.remove();
     });
   };
+  const pushOfArray = (input, array) => {
+    const arrayPush = input.value;
+    array.push(arrayPush);
+  };
+
+  inputSearch.addEventListener('input', () => {
+    arrayOfPosts.filter((element) => inputSearch.value);
+    console.log(arrayOfPosts);
+  });
+
+  buttonNext.addEventListener('click', () => {
+    postsList.innerHTML = '';
+    inputTitle.value = '';
+    inputContent.value = '';
+    count++;
+    start += 10;
+    end += 10;
+    buttonPrev.disabled = false;
+    const quantityOfPosts = arrayOfPosts.slice(start, end).forEach((element) => {
+      createPost(element);
+    });
+    const quantityOfPostsOnNextPage = arrayOfPosts.slice(count * 10, (count + 1) * 10);
+    quantityOfPosts <= 10 || quantityOfPostsOnNextPage <= 1 ? buttonNext.classList.add('disabled') : buttonNext.classList.remove('disabled');
+  });
+
+  buttonPrev.addEventListener('click', () => {
+    postsList.innerHTML = '';
+    inputTitle.value = '';
+    inputContent.value = '';
+    if (count === 1) {
+      count = 1;
+      buttonPrev.disabled = true;
+    } else {
+      start -= 10;
+      end -= 10;
+      count--;
+      buttonNext.disabled = false;
+    }
+    arrayOfPosts.slice(start, end).forEach((element) => {
+      createPost(element);
+    });
+  });
+
+  buttonAddPost.addEventListener('click', () => {
+    pushOfArray(inputTitle, arrayCreatedPost);
+    pushOfArray(inputContent, arrayCreatedPost);
+  });
+
+  form.addEventListener('submit', (evt) => {
+    evt.preventDefault();
+    const newPost = {
+      id: arrayOfPosts.length,
+      title: inputTitle.value,
+      body: inputContent.value,
+    };
+  });
 };
 getData();
-
-const pushOfArray = (input, array) => {
-  const arrayPush = input.value;
-  array.push(arrayPush);
-};
 
 // const sliceArrays = () => {
 //   const arrayOfPosts.push(pushOfArray);
 // }
 
-buttonAddPost.addEventListener('click', () => {
-  pushOfArray(inputTitle, arrayCreatedPost);
-  pushOfArray(inputContent, arrayCreatedPost);
-});
-
-form.addEventListener('click', (evt) => {
-  evt.preventDefault();
-  const newPost = {
-    id: arrayOfPosts.length,
-    title: inputTitle.value,
-    body: inputContent.value,
-  };
-});
-
-buttonPrev.addEventListener('click', () => {
-  postsList.innerHTML = '';
-  if (count === 1) {
-    count = 1;
-    buttonPrev.disabled = true;
-  } else {
-    start -= 10;
-    end -= 10;
-    count--;
-    buttonNext.disabled = false;
-  }
-  getData();
-});
-
-buttonNext.addEventListener('click', () => {
-  postsList.innerHTML = '';
-  count++;
-  start += 10;
-  end += 10;
-  buttonPrev.disabled = false;
-  getData();
-});

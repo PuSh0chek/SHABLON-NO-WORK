@@ -30,7 +30,7 @@ const createPost = ({ id, title, body }) => {
   makeTag('p', 'posts__text', li, body);
   makeTag('button', 'button__clip', li);
 };
-
+////printPost закинь//////
 const filterArraytForPost = (array) => {
   array.slice(start, end).forEach((element) => {
     createPost(element);

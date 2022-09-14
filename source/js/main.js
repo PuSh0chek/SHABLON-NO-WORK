@@ -61,6 +61,7 @@ const getData = async () => {
       if (element.title.includes(inputSearch.value)) {
         const post = createPost(element);
         postsList.append(post);
+
       };
     });
     console.log(arrayOfPosts);

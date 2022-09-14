@@ -67,8 +67,8 @@ const getData = async () => {
     postsList.innerHTML = '';
     arrayOfPosts.filter(element => {
       if (element.title.includes(inputSearch.value)) {
-        const post = printPost(element);
-        postsList.appendChild(post);
+        const post = createPost(element);
+        postsList.append(post);
       }
     });
     console.log(arrayOfPosts);

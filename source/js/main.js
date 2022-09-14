@@ -30,7 +30,7 @@ const createPost = ({ id, title, body }) => {
   makeTag('p', 'posts__text', li, body);
   makeTag('button', 'button__clip', li);
 };
-////printPost закинь//////
+
 const filterArraytForPost = (array) => {
   array.slice(start, end).forEach((element) => {
     createPost(element);
@@ -76,7 +76,9 @@ const getData = async () => {
     buttonPrev.disabled = false;
     const quantityOfPosts = filterArraytForPost(arrayOfPosts);
     const quantityOfPostsOnNextPage = arrayOfPosts.slice(count * 10, (count + 1) * 10);
-    quantityOfPosts <= 10 || quantityOfPostsOnNextPage <= 1 ? buttonNext.classList.add('disabled') : buttonNext.classList.remove('disabled');
+    quantityOfPosts <= 10 || quantityOfPostsOnNextPage <= 1
+      ? buttonNext.classList.add('disabled')
+      : buttonNext.classList.remove('disabled');
   });
 
   buttonPrev.addEventListener('click', () => {
